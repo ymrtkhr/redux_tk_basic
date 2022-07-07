@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   decrement,
   increment,
@@ -7,13 +7,16 @@ import {
   incrementAsync,
   incrementIfOdd,
   selectCount,
-} from './counterSlice';
-import styles from './Counter.module.css';
+} from "./counterSlice";
+import styles from "./Counter.module.css";
 
 export function Counter() {
+  // storeから現在のvalueを読み取り、ローカルのcountに代入している
   const count = useSelector(selectCount);
+  // ユーザの操作をストアに伝達する。
   const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
+  // ローカルで一時的に使いたいステートはReduxに追加しない。
+  const [incrementAmount, setIncrementAmount] = useState("2");
 
   const incrementValue = Number(incrementAmount) || 0;
 
@@ -27,6 +30,7 @@ export function Counter() {
         >
           -
         </button>
+        {/* カウント表示 */}
         <span className={styles.value}>{count}</span>
         <button
           className={styles.button}
